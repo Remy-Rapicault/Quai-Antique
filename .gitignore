@@ -1,15 +1,17 @@
-# Node modules
+# Node.js
 node_modules/
 
-# Dossier de configuration spécifique à VSCode
-.vscode/
-
-# Dossier de build
-dist/
-build/
-
-# Log files
+# Logs
+logs/
 *.log
 
-# Fichiers temporaires
-*.tmp
+# VSCode configuration
+.vscode/
+
+# Systèmes d'exploitation
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Cache/Build Files
+dist/
+build/
