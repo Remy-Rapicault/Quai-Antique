@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Dossier de configuration spécifique à VSCode
+.vscode/
+
+# Dossier de build
+dist/
+build/
+
+# Log files
+*.log
+
+# Fichiers temporaires
+*.tmp
