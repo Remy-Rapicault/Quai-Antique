@@ -44,6 +44,9 @@ if (actualRoute.pathJS != "") {
 
   // Changement du titre de la page
 document.title = actualRoute.title + " - " + websiteName;
+
+//Afficher et masquer les éléments en fonction du rôle
+showAndHideElementForRoles();
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
@@ -52,7 +55,8 @@ event = event || window.event;
 event.preventDefault();
   // Mise à jour de l'URL dans l'historique du navigateur
 window.history.pushState({}, "", event.target.href);
-  // Chargement du contenu de la nouvelle page
+
+// Chargement du contenu de la nouvelle page
 LoadContentPage();
 };
 
