@@ -16,9 +16,8 @@ jobs:
         password: ${{ secrets.ftp_password }}
         protocol: ftps
         port: 21  # Définit le port FTP standard
-        concurrency: 3
-        timeout: 60
-        security: "loose"
+        timeout: 180  # Augmenter le délai pour éviter le timeout
+        security: "loose"  # Utiliser "loose" ou "strict" en fonction de votre configuration sur AlwaysData
         exclude: |
           **/.git*
           **/.git*/**
