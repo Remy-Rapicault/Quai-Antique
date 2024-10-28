@@ -7,14 +7,16 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-   
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp-quaiantique84.alwaysdata.net
+        server: ftp.quaiantique84.alwaysdata.net
         username: quaiantique84
         password: ${{ secrets.ftp_password }}
-        protocol: ftps  # Définit l’utilisation de SFTP
+        protocol: ftps-legacy
+        retry-max: 5                   # Augmente le nombre de tentatives
+        retry-delay: 5000              # Délai de 5 secondes entre chaque tentative
         exclude: |
           **/.git*
           **/.git*/**
