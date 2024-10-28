@@ -17,6 +17,8 @@ jobs:
       run: npm install
     
     - name: 📂 Sync files
+      env:
+        ACTIONS_STEP_DEBUG: true  # Activer les logs de débogage
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp-quaiantique84.alwaysdata.net
