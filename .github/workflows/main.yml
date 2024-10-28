@@ -11,16 +11,16 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp.quaiantique84.alwaysdata.net
+        server: ftp.alwaysdata.net  # Adresse FTP générique AlwaysData
         username: quaiantique84
         password: ${{ secrets.ftp_password }}
-        protocol: ftps-legacy
-        retry-max: 5                   # Augmente le nombre de tentatives
-        retry-delay: 5000              # Délai de 5 secondes entre chaque tentative
+        protocol: ftps
+        port: 21  # Définit le port FTP standard
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**  
+          **/node_modules/bootstrap-icons/icons/**
         server-dir: /www/
+
