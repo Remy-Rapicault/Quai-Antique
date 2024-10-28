@@ -1,35 +1,34 @@
-on: push
+on: 
+  push:
+    branches:
+      - main  # Déclencher le workflow lors d'un push sur la branche principale
+
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
-    - name: 📂 Install dependencies
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  
-
-    - name: 📂 Install npm dependencies
-      run: npm install
-    
     - name: 📂 Sync files
-      env:
-        ACTIONS_STEP_DEBUG: true  # Activer les logs de débogage
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp-quaiantique84.alwaysdata.net
         username: quaiantique84
-        password : ${{ secrets.ftp_password }}
+        password: ${{ secrets.ftp_password }}
+        protocol: ftps  # Utiliser FTPS pour une connexion sécurisée
+        port: 21
+        security: "loose"
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**  
+          **/node_modules/bootstrap-icons/icons/**
         server-dir: /www/
 
 
