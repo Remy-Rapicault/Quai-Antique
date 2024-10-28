@@ -1,9 +1,15 @@
-on : push
+on: 
+  push:
+    branches:
+      - main  # Déclencher le workflow lors d'un push sur la branche principale
+
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
@@ -11,14 +17,17 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp-quaiantique84.alwaysdata.net  # Adresse FTP générique AlwaysData
+        server: ftp-quaiantique84.alwaysdata.net  # Adresse FTP AlwaysData
         username: quaiantique84
         password: ${{ secrets.ftp_password }}
+        protocol: ftps  # Utilisation de FTPS pour une connexion sécurisée
+        port: 21  # Utilisez le port 21 pour FTPS explicite
+        security: "loose"  # Vérification SSL "loose" pour éviter les erreurs de certificat auto-signé
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
           **/node_modules/bootstrap-icons/icons/**
-        server-dir: /www/
+        server-dir: /www/  # Répertoire sur le serveur cible
 
