@@ -14,7 +14,7 @@ jobs:
         server: ftp-quaiantique84.alwaysdata.net  # Adresse FTP générique AlwaysData
         username: quaiantique84
         password: ${{ secrets.ftp_password }}
-        protocol: ftps
+        protocol: ftps-legacy
         port: 21  # Définit le port FTP standard
         timeout: 180  # Augmenter le délai pour éviter le timeout
         security: "loose"  # Utiliser "loose" ou "strict" en fonction de votre configuration sur AlwaysData
