@@ -11,7 +11,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp.alwaysdata.net  # Adresse FTP générique AlwaysData
+        server: ftp-quaiantique84.alwaysdata.net  # Adresse FTP générique AlwaysData
         username: quaiantique84
         password: ${{ secrets.ftp_password }}
         protocol: ftps
