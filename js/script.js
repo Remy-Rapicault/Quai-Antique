@@ -106,10 +106,12 @@ function getInfosUser() {
                 return response.json();
             } else {
                 console.log("Impossible de récupérer les informations utilisateur");
+                return null; // Retourne explicitement `null` si la réponse n'est pas correcte
             }
         })
         .then(result => {
-            if (result && result.role) {
+            // Vérifie d'abord si result n'est pas nul ou undefined, puis vérifie la propriété `role`
+            if (result?.role) {
                 setCookie(roleCookieName, result.role, 7); // Met à jour le rôle dans le cookie
                 showAndHideElementForRoles(); // Met à jour l'affichage selon le rôle
             }
