@@ -7,8 +7,6 @@ if (signoutBtn) {
     signoutBtn.addEventListener("click", signout);
 }
 
-getInfosUser(); // Récupération des infos de l'utilisateur au chargement de la page
-
 function getRole() {
     return getCookie(roleCookieName);
 }
@@ -88,41 +86,37 @@ function showAndHideElementForRoles() {
     });
 }
 
-// Fonction pour récupérer les informations utilisateur
-function getInfosUser() {
-    let myHeaders = new Headers();
-    myHeaders.append("X-AUTH-TOKEN", getToken());
-
-    let requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow',
-        mode: 'cors'
-    };
-
-    fetch(apiUrl+"account/me", requestOptions)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.log("Impossible de récupérer les informations utilisateur");
-                return null; // Retourne explicitement `null` si la réponse n'est pas correcte
-            }
-        })
-        .then(result => {
-            // Vérifie d'abord si result n'est pas nul ou undefined, puis vérifie la propriété `role`
-            if (result?.role) {
-                setCookie(roleCookieName, result.role, 7); // Met à jour le rôle dans le cookie
-                showAndHideElementForRoles(); // Met à jour l'affichage selon le rôle
-            }
-        })
-        .catch(error => {
-            console.error("Erreur lors de la récupération des données utilisateur", error);
-        });
-}
-
 function sanitizeHtml(text){
     const tempHtml = document.createElement('div');
     tempHtml.textContent = text;
     return tempHtml.innerHTML;
+}
+
+function getInfosUser(){
+    console.log("Récupération des informations de l'utilisateur ... ");
+    
+    let myHeaders = new Headers();
+    myHeaders.append("X-AUTH-TOKEN", getToken());
+    
+    let requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(apiUrl+"account/me", requestOptions)
+    .then(response =>{
+        if(response.ok){
+            return response.json();
+        }
+        else{
+            console.log("Impossible de récupérer les informations utilisateur");
+        }
+    })
+    .then(result => {
+        return result;
+    })
+    .catch(error =>{
+        console.error("erreur lors de la récupération des données utilisateur", error);
+    });
 }
