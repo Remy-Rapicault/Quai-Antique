@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = 'https://quaiantique84.alwaysdata.net/';
+const apiUrl = "http://127.0.0.1:8000/api/";
 
 if (signoutBtn) {
     signoutBtn.addEventListener("click", signout);
@@ -100,7 +100,7 @@ function getInfosUser() {
         mode: 'cors'
     };
 
-    fetch(apiUrl + "account/me", requestOptions)
+    fetch(apiUrl+"account/me", requestOptions)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -119,4 +119,10 @@ function getInfosUser() {
         .catch(error => {
             console.error("Erreur lors de la récupération des données utilisateur", error);
         });
+}
+
+function sanitizeHtml(text){
+    const tempHtml = document.createElement('div');
+    tempHtml.textContent = text;
+    return tempHtml.innerHTML;
 }
