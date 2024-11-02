@@ -23,23 +23,23 @@ function checkCredentials(){
         redirect: 'follow'
     };
 
-    fetch(apiUrl+"login", requestOptions)
+    fetch(apiUrl + "login", requestOptions)
     .then(response => {
-        if(response.ok){
-            return response.json();
+        if (!response.ok) {
+            throw new Error("Connexion échouée : " + response.status);
         }
-        else{
-            mailInput.classList.add("is-invalid");
-            passwordInput.classList.add("is-invalid");
-        }
+        return response.json();
     })
     .then(result => {
-        const token = result.apiToken;
-        setToken(token);
-        //placer ce token en cookie
-
-        setCookie(roleCookieName, result.roles[0], 7);
-        window.location.replace("/");
+        if (result && result.apiToken) {
+            const token = result.apiToken;
+            setToken(token);
+            setCookie(roleCookieName, result.roles[0], 7);
+            window.location.replace("/");
+        } else {
+            console.error("Erreur: Le token n'est pas défini dans la réponse.");
+        }
     })
-    .catch(error => console.log('error', error));
+    .catch(error => console.error("Erreur lors de la connexion:", error));
+
 }
