@@ -2,7 +2,7 @@ const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
 const isLocalhost = window.location.hostname === "localhost";
-const apiUrl = isLocalhost ? "http://127.0.0.1:8000/api/" : "https://quaiantique84.alwaysdata.net/api/";
+const apiUrl = isLocalhost ? "http://127.0.0.1:3000/api/" : "https://quaiantique84.alwaysdata.net/api/";
 
 
 if (signoutBtn) {
