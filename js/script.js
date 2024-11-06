@@ -3,7 +3,6 @@ const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
 const apiUrl = "http://quaiantique84.alwaysdata.net/";
 
-
 signoutBtn.addEventListener("click", signout);
 
 function getRole() {
