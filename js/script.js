@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = "http://quaiantique84.alwaysdata.net/";
+const apiUrl = "https://quaiantique84.alwaysdata.net/api/";
 
 signoutBtn.addEventListener("click", signout);
 

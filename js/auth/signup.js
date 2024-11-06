@@ -1,5 +1,4 @@
 //Implémenter le JS de ma page
-
 const inputNom = document.getElementById("NomInput");
 const inputPreNom = document.getElementById("PrenomInput");
 const inputMail = document.getElementById("EmailInput");
