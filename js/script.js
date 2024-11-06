@@ -1,13 +1,10 @@
 const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const isLocalhost = window.location.hostname === "localhost";
-const apiUrl = isLocalhost ? "http://127.0.0.1:3000/api/" : "https://quaiantique84.alwaysdata.net/api/";
+const apiUrl = "http://127.0.0.1:8000/api/";
 
 
-if (signoutBtn) {
-    signoutBtn.addEventListener("click", signout);
-}
+signoutBtn.addEventListener("click", signout);
 
 function getRole() {
     return getCookie(roleCookieName);
@@ -95,8 +92,6 @@ function sanitizeHtml(text){
 }
 
 function getInfosUser(){
-    console.log("Récupération des informations de l'utilisateur ... ");
-    
     let myHeaders = new Headers();
     myHeaders.append("X-AUTH-TOKEN", getToken());
     

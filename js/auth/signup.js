@@ -92,27 +92,28 @@ function validateRequired(input){
 }
 
 //Inscription Utilisateur
-function  InscrireUtilisateur(){
+    function  InscrireUtilisateur(){
+
     let dataForm = new FormData(formInscription);
 
-    let myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+        let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-let raw = JSON.stringify({
-    "firstName": dataForm.get("nom"),
-    "lastName": dataForm.get("prenom"),
-    "email": dataForm.get("email"),
-    "password": dataForm.get("mdp")
-});
+    let raw = JSON.stringify({
+        "firstName": dataForm.get("nom"),
+        "lastName": dataForm.get("prenom"),
+        "email": dataForm.get("email"),
+        "password": dataForm.get("mdp"),
+    });
 
-let requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-};
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
 
-fetch(apiUrl+"registration", requestOptions)
+    fetch(apiUrl+"registration", requestOptions)
     .then(response => {
         if(response.ok){
             return response.json();
