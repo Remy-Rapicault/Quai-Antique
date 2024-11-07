@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = "https://quaiantique84.alwaysdata.net/api/"; // <= Url site d'hébergement
+const apiUrl = "http://127.0.0.1:8000/api/"; // <= Url site d'hébergement
 
 signoutBtn.addEventListener("click", signout);
 
