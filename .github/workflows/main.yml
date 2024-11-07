@@ -9,9 +9,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: 📂 Install dependencies
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '20'
         
     - name: 📂 Install npm dependencies
       run: npm install  
