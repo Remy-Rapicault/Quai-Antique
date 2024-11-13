@@ -12068,4 +12068,40 @@ p {
   display: block;
   color: #292222;
   padding: 10px;
+}
+
+/* Styles de base pour la page Carte */
+#menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.menu-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.menu-card h2, .menu-card .h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.menu-card p {
+  font-style: italic;
+  color: #666;
+}
+
+.menu-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-card ul li {
+  margin: 5px 0;
 }/*# sourceMappingURL=main.css.map */
