@@ -1,7 +1,3 @@
-// carte.js
-
-const apiUrl = "https://127.0.0.1:8000/api/menus"; // Remplace par l'URL de ton API
-
 async function fetchMenus() {
     try {
         const response = await fetch(apiUrl);
